@@ -1,12 +1,13 @@
-import './App.css'
+import "./App.css";
+import { AppProvider } from "./provider/app";
+import { AppRoutes } from "./routes";
 
 function App() {
-
   return (
-    <>
-    EleganceEmporium
-    </>
-  )
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
+  );
 }
 
-export default App
+export default App;
