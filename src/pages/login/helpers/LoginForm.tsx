@@ -5,7 +5,7 @@ import FormItem from "../../../components/formItem/FormItem";
 const formItems = [
   {
     label: "UserName",
-    name: "username",
+    name: "userName",
     rules: [{ required: true, message: "Please input your username!" }],
     element: <Input />,
   },

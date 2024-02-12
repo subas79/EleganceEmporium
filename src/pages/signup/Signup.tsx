@@ -1,12 +1,16 @@
 import React from "react";
 import FromWrapper from "../../components/formWrapper/FormWraper";
+import { useSignup } from "../../hooks/auth";
 import SignupForm from "./helpers/SignupForm";
-import { ECOM_URL } from "../../config/api";
+import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-    console.log(ECOM_URL.register)
+  const navigate = useNavigate();
+  const signup = useSignup();
+
+  const onFinish = async (values: any) => {
+    await signup.mutateAsync(values);
+    navigate("/");
   };
 
   const onFinishFailed = (errorInfo: any) => {

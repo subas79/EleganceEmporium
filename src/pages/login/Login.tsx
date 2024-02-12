@@ -1,10 +1,21 @@
 import React from "react";
 import FromWrapper from "../../components/formWrapper/FormWraper";
 import LoginForm from "./helpers/LoginForm";
+import { Link, useNavigate } from "react-router-dom";
+import { useLogin } from "../../hooks/auth";
+import storage from "../../utils/storage";
 
 const Login: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const navigate = useNavigate();
+  const login = useLogin();
+
+  const onFinish = async (values: any) => {
+   const res = await login.mutateAsync(values);
+   console.log(res)
+   if(res.accessToken){
+    storage.setToken(res.accessToken)
+    navigate('/dashboard')
+   }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -14,6 +25,9 @@ const Login: React.FC = () => {
   return (
     <FromWrapper onFinish={onFinish} onFinishFailed={onFinishFailed}>
       <LoginForm />
+      <p>
+        Don't have an account? <Link to="/signup">Signup</Link>
+      </p>
     </FromWrapper>
   );
 };
