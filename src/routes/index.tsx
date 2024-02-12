@@ -6,7 +6,6 @@ import { useGetToken } from "../hooks/useGetToken";
 
 export const AppRoutes = () => {
   const token = useGetToken();
-  console.log(token)
   const routes = token ? protectedRoutes : publicRoutes;
 
   const element = useRoutes([...routes]);

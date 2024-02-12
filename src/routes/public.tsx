@@ -1,15 +1,13 @@
-// import { lazyImport } from "../utils/lazyImports";
-
 import Login from "../pages/login/Login";
-
-// const  {Login}  = lazyImport(
-//     () => import("../pages/login/Login"),
-//     "Login"
-//   );
+import Signup from "../pages/signup/Signup";
 
 export const publicRoutes = [
   {
     path: "/",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 ];
