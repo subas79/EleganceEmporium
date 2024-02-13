@@ -10,12 +10,12 @@ const Login: React.FC = () => {
   const login = useLogin();
 
   const onFinish = async (values: any) => {
-   const res = await login.mutateAsync(values);
-   console.log(res)
-   if(res.accessToken){
-    storage.setToken(res.accessToken)
-    navigate('/dashboard')
-   }
+    const res = await login.mutateAsync(values);
+
+    if (res.accessToken) {
+      storage.setToken(res.accessToken);
+      navigate("/dashboard");
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
